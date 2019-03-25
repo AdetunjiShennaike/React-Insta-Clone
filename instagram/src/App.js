@@ -5,6 +5,7 @@ import Search from './components/SearchBar/SearchComponent'
 import Post from './components/PostContainer/PostContainer'
 
 
+
 class App extends Component {
   constructor () {
     super()
@@ -15,7 +16,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <header className="App-header">
           <Search />
         </header>

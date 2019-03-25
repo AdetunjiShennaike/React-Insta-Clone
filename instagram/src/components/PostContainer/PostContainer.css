@@ -26,6 +26,18 @@
   margin-right: 20px;
 }
 
-.picture-comment {
+.comment {
   margin-left: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.comment .time {
+  color: lightgray;
+}
+
+.newComment {
+  margin-left: 30px;
+  padding: 40px 0;
+
 }
