@@ -1,0 +1,31 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.profileimg {
+  border-radius: 100%;
+  height: 50px;
+  widows: auto;
+  margin-right: 10px;
+
+}
+
+.pngImgs {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 30px;
+  
+}
+
+.pngImgs img {
+  margin-right: 20px;
+}
+
+.picture-comment {
+  margin-left: 30px;
+}
