@@ -28,7 +28,7 @@
 }
 
 .comment {
-  margin: 0 30px;
+  margin-left: 30px;
   padding-bottom: 20px;
   border-bottom: 1px solid lightgrey;
 }
@@ -38,7 +38,10 @@
 }
 
 .newComment {
-  margin: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30px;
   padding: 40px 0;
 
 }

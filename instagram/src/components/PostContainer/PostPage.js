@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Page.css';
 import dummyData from './dummy-data'
 import newData from './new-dummy'
 import Search from './components/SearchBar/SearchComponent'
@@ -9,7 +9,7 @@ import Post from './components/PostContainer/PostContainer'
 let stored = window.localStorage
 
 
-class App extends Component {
+class PostPage extends Component {
   constructor () {
     super()
     //set state for this class
@@ -93,4 +93,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default PostPage;
