@@ -7,33 +7,13 @@ import PropTypes from 'prop-types'
 
 
 //pass in props to call on the passed down properties from the app.js
-class Post extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = { 
-      username: props.post.username,
-      id: props.post.Id,
-      thumbnailUrl: props.post.thumbnailUrl,
-      imageUrl: props.post.imageUrl,
-      like: props.post.likes,
-      timestamp: props.post.timestamp,
-      comments: props.post.comments,
-      updateLocalData: props.post.updateLocalData,
-
-    }
-  
-  }
-
-  updateLikes = event => {
-    event.preventDefault();
-
-    this.setstate({
-      
-    })
-  }
+function Post(props) {
+    
+  console.log(props.post.username)
+  console.log(props.post)
 
 
-  return (){
+  return( 
     <div className='post-container'>
     {/* input all items from dummy data objects using props that were passed down from app */}
       <header className='top-bar'>
@@ -48,18 +28,15 @@ class Post extends React.Component {
         <img src='./111-bubble2.png' alt='comment'></img>
       </div>
 
-      <h3>{props.post.likes} Likes</h3>
+      <h3>{props.post.like} Likes</h3>
       <CommentContainer 
-        comments={this.state.comments}
-        timestamp={this.state.timestamp}
-        updateLocalData={this.updateLocalData}
-      />
-     
-      
+        comments={props.post.comments}
+        timestamp={props.post.timestamp}
+        updateLocalData={props.post.updateLocalData}
+      />        
     </div>
-  } 
+  ) 
 }
-
 
 
 Post.propTypes = {
@@ -77,7 +54,8 @@ Post.propTypes = {
       })
     })
   )
-  
 }
+
+
 
 export default Post

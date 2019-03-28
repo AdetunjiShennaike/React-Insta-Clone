@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './Page.css';
-import dummyData from './dummy-data'
-import newData from './new-dummy'
-import Search from './components/SearchBar/SearchComponent'
-import Post from './components/PostContainer/PostContainer'
+import dummyData from '../../dummy-data'
+import newData from '../../new-dummy'
+import Search from '../SearchBar/SearchComponent'
+import Post from './PostContainer'
 
 //make a shorthand value for local storage
 let stored = window.localStorage
@@ -23,7 +23,7 @@ class PostPage extends Component {
 
     this.setState({
        data: dummyData, newData
-       // if (JSON.parse(stored.getItem('storedPost'))){
+      // if (JSON.parse(stored.getItem('storedPost'))){
       //   data = JSON.parse(stored.getItem('storedPost'))
       // }
       // else{
@@ -32,29 +32,29 @@ class PostPage extends Component {
     }) 
   }
 
-  //when a new event happens change the local storage
-  updateLocalData() {
-    //set item that s
+  // //when a new event happens change the local storage
+  // updateLocalData() {
+  //   //set item that s
 
 
-    // store the data into local storage
-    stored.setItem('exchange', JSON.stringify(exchange))
-    console.log(exchange)
+  //   // store the data into local storage
+  //   stored.setItem('exchange', JSON.stringify(exchange))
+  //   console.log(exchange)
 
-    // change the data being used on the page to the data that is in local storage
-    this.setState({
-      data: JSON.parse(stored.getItem('exchange')),
-    });
-  }
+  //   // change the data being used on the page to the data that is in local storage
+  //   this.setState({
+  //     data: JSON.parse(stored.getItem('exchange')),
+  //   });
+  // }
 
-  textCapture = event => {
-    // capture the input from the target using the name
-    // console.log('event : ', event.target.value)
+  // textCapture = event => {
+  //   // capture the input from the target using the name
+  //   // console.log('event : ', event.target.value)
     
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   });
+  // };
 
   // searchCapture = event => {
   //   // capture the input from the target using the name and have it filter out usernames
