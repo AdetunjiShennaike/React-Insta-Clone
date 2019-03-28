@@ -1,5 +1,6 @@
 import React from 'react'
 import './PostContainer.css'
+import styled, { css } from 'styled-components';
 
 //import component and react functions
 import CommentContainer from '../CommentSection/CommentContainer'

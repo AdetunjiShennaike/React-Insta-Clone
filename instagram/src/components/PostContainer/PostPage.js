@@ -5,6 +5,7 @@ import newData from '../../new-dummy'
 import Search from '../SearchBar/SearchComponent'
 import Post from './PostContainer'
 import Loader from 'react-loader-spinner'
+import styled from 'styled-components';
 
 //make a shorthand value for local storage
 let stored = window.localStorage
@@ -15,7 +16,9 @@ class PostPage extends Component {
     super()
     //set state for this class
     this.state = {
-      data: []
+      data: [],
+      search: '',
+      query: ''
     }
   }
 
@@ -26,15 +29,16 @@ class PostPage extends Component {
     setTimeout(() => {
       this.setState({
        data: dummyData, newData
+      })
     }, 3000);
     
-      // if (JSON.parse(stored.getItem('storedPost'))){
-      //   data = JSON.parse(stored.getItem('storedPost'))
-      // }
-      // else{
-      //   data = dummyData
-      // }
-    }) 
+    // if (JSON.parse(stored.getItem('storedPost'))){
+    //   data = JSON.parse(stored.getItem('storedPost'))
+    // }
+    // else{
+    //   data = dummyData
+    // }
+    
   }
 
   // //when a new event happens change the local storage
@@ -52,21 +56,43 @@ class PostPage extends Component {
   //   });
   // }
 
- 
+  //text capture of search box
+  // searchCapture = event => {
+  //   // capture the input from the target using the name
+  //  this.setState({
+  //     search : event.target.value
+  //   })
+    
+  // };
 
-  searchCapture = event => {
+  searchResult = event => {
+    //prevent default behavior
+    event.preventDefault();
+
     // capture the input from the event target value and have it filter out usernames
-    let input = event.target.value;
-    let result = this.state.data.filter( target => {
-      target.username === input
+    this.state.search = event.target.value;
+    console.log('event: ',this.state.search)
+    let result = []
+
+    result = this.state.data.filter( (target, i) => {
+      target.username[i].startsWith(`${this.state.search}`)
+      console.log(target.username)
+      console.log(target.username[i])
     });
     console.log(result)
+
+    result.unshift('your search results')
 
     this.setState({
       data: result
     });
+    
+
   };
   
+  updateLikes() {
+
+  }
 
   //render the entire application
   render() {
@@ -88,7 +114,15 @@ class PostPage extends Component {
             color="#00BFFF"
             height="100"	
             width="100"
-          /> 
+          />
+        //make a else if statement for the search bar 
+        : this.state.data.length === 1
+        //display a sorry for there being no results by adding 1 item to the array by default
+        ?
+          <h2> 
+            Sorry we could not find what you were looking for
+          </h2>
+        
         //  map through the data and use it to display all the post items, as well as putting inputs through to the component 
         :
           this.state.data.map( item => 

@@ -1,5 +1,6 @@
 import React from 'react'
 import './Comment.css'
+import styled from 'styled-components';
 
 
 function Comment(props) {

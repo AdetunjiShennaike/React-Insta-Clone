@@ -23,7 +23,7 @@ class CommentContainer extends React.Component {
   //text capture of comment box
   commentCapture = event => {
     // capture the input from the target using the name
-    console.log('event : ', event.target.value)
+    // console.log('event : ', event.target.value)
     
    this.setState({
       [event.target.name]: event.target.value
@@ -45,12 +45,12 @@ class CommentContainer extends React.Component {
 
     //grab the current array to input the new comments into
     let exchange = this.state.comments.slice();
-    console.log(exchange)
+    // console.log(exchange)
     exchange.push(newCmt);
 
     // store the data into local storage
     stored.setItem('comments', JSON.stringify(exchange))
-    console.log(exchange)
+    // console.log(exchange)
     this.setState({
       comments: JSON.parse(stored.getItem('comments')),
       text:''
@@ -72,19 +72,19 @@ class CommentContainer extends React.Component {
           {/* <p className='time'>{moment().startOf(moment(props.post.timestamp).format()).fromNow()}</p> */}
 
         </div>
-
-        <div className='newComment'>{console.log(this.state.text)}
-            <form onSubmit={this.updateComments}>
-              <input 
-                type='text' 
-                size={75} 
-                name='text'
-                value={this.state.text}
-                placeholder='Add A Comment...' 
-                onChange={this.commentCapture}>
-              </input>
-            </form>
-          
+        
+        <div className='newComment'>{/*console.log(this.state.text)*/}
+          <form onSubmit={this.updateComments}>
+            <input 
+              type='text' 
+              size={75} 
+              name='text'
+              value={this.state.text}
+              placeholder='Add A Comment...' 
+              onChange={this.commentCapture}>
+            </input>
+          </form>
+        
           <img src='./dots.png' alt='more'></img>
         </div>
       </div> 
