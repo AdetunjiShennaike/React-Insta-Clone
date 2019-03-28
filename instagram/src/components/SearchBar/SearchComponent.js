@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 // import './Search.css'
 
-
+//styled components
 let SearchBar = styled.div`
   display:flex;
   justify-content: space-between;

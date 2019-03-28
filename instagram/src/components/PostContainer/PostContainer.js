@@ -1,28 +1,57 @@
 import React from 'react'
-import './PostContainer.css'
-import styled, { css } from 'styled-components';
+// import './PostContainer.css'
+import styled from 'styled-components';
 
 //import component and react functions
 import CommentContainer from '../CommentSection/CommentContainer'
 import PropTypes from 'prop-types'
 
+//styled components
+let TopBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0 30px 20px 0;
+`
+
+let ProfileImg = styled.img`
+  border-radius: 100%;
+  height: 50px;
+  widows: auto;
+  margin-right: 20px;
+
+`
+
+let PngContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  margin: 0 30px;
+  
+`
+
+let PngImgs = styled.img `
+  margin-right: 10px;
+  width: auto;
+  height: 30px;
+`
 
 //pass in props to call on the passed down properties from the app.js
 function Post(props) {
   return( 
     <div className='post-container'>
     {/* input all items from dummy data objects using props that were passed down from app */}
-      <header className='top-bar'>
-        <img src={props.post.thumbnailUrl} alt='user' className='profileimg'></img> 
+      <TopBar>
+        <ProfileImg src={props.post.thumbnailUrl} alt='user'></ProfileImg> 
         <h3>{props.post.username}</h3>       
-      </header>
+      </TopBar>
 
       <img src={props.post.imageUrl} alt='posted'></img>
 
-      <div className='pngImgs'>
-        <img src='./219-heart.png' alt='like' onClick={props.likeButton}></img>
-        <img src='./111-bubble2.png' alt='comment'></img>
-      </div>
+      <PngContainer>
+        <PngImgs src='./219-heart.png' alt='like' onClick={props.likeButton}></PngImgs>
+        <PngImgs src='./111-bubble2.png' alt='comment'></PngImgs>
+      </PngContainer>
 
       <h3>{props.post.like} Likes</h3>
       <CommentContainer 

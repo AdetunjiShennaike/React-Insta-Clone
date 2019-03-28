@@ -1,11 +1,32 @@
 import React from 'react'
 import Comment from './Comment'
+import styled from 'styled-components';
 
 //import moment to change the timestamp apperance
 import moment from 'moment'
 
 //used a shorthand instead of typing locastorage everytime
 let stored = window.localStorage
+
+//styled components
+let CommentBox =  styled.div`
+  margin-left: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+`
+
+let Time = styled.p`
+  color: lightgray;
+`
+
+let NewComment = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30px;
+  padding: 40px 0;
+
+`
 
 class CommentContainer extends React.Component {
   constructor(props) {
@@ -61,19 +82,19 @@ class CommentContainer extends React.Component {
   render() {
     return (
       <div>
-        <div className='comment'>        
+        <CommentBox>        
           {/* <p><strong>{props.post.comments[0].username}</strong> {props.post.comments[0].text}</p> */}
           {/* map each comment object into a single comment */}
           {this.state.comments.map( event =>
             <Comment key={event.id} post={event} />
           )}
           {/*time stamp using past tense words created through moment and fornow */}
-          <p className="post-time" title={moment(this.state.timestamp,'MMMM Do YYYY, h:mm:ss a').format('MMMM Do YYYY, h:mm a')}>{moment(this.state.timestamp,'MMMM Do YYYY, h:mm:ss a').fromNow()}</p>
+          <Time title={moment(this.state.timestamp,'MMMM Do YYYY, h:mm:ss a').format('MMMM Do YYYY, h:mm a')}>{moment(this.state.timestamp,'MMMM Do YYYY, h:mm:ss a').fromNow()}</Time>
           {/* <p className='time'>{moment().startOf(moment(props.post.timestamp).format()).fromNow()}</p> */}
 
-        </div>
-        
-        <div className='newComment'>{/*console.log(this.state.text)*/}
+        </CommentBox>
+
+        <NewComment>{/*console.log(this.state.text)*/}
           <form onSubmit={this.updateComments}>
             <input 
               type='text' 
@@ -86,7 +107,7 @@ class CommentContainer extends React.Component {
           </form>
         
           <img src='./dots.png' alt='more'></img>
-        </div>
+        </NewComment>
       </div> 
     ) 
   } 
