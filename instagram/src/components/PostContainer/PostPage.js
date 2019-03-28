@@ -4,6 +4,7 @@ import dummyData from '../../dummy-data'
 import newData from '../../new-dummy'
 import Search from '../SearchBar/SearchComponent'
 import Post from './PostContainer'
+import Loader from 'react-loader-spinner'
 
 //make a shorthand value for local storage
 let stored = window.localStorage
@@ -21,8 +22,12 @@ class PostPage extends Component {
   //call data from dummy text with the mount and set state
   componentDidMount() {
 
-    this.setState({
+    // add a timeput so that the screen loader works
+    setTimeout(() => {
+      this.setState({
        data: dummyData, newData
+    }, 3000);
+    
       // if (JSON.parse(stored.getItem('storedPost'))){
       //   data = JSON.parse(stored.getItem('storedPost'))
       // }
@@ -47,45 +52,50 @@ class PostPage extends Component {
   //   });
   // }
 
-  // textCapture = event => {
-  //   // capture the input from the target using the name
-  //   // console.log('event : ', event.target.value)
-    
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
+ 
 
-  // searchCapture = event => {
-  //   // capture the input from the target using the name and have it filter out usernames
-  //   let input = event.target.value;
-  //   let result = this.state.data.filter( target => {
-  //     target.username === input
-  //   });
-  //   console.log(result)
+  searchCapture = event => {
+    // capture the input from the event target value and have it filter out usernames
+    let input = event.target.value;
+    let result = this.state.data.filter( target => {
+      target.username === input
+    });
+    console.log(result)
 
-  //   this.setState({
-  //     data: result
-  //   });
-  // };
+    this.setState({
+      data: result
+    });
+  };
   
 
   //render the entire application
   render() {
     return (
       <div className="container">
+         
         {/* add the search component to the top */}
         <Search 
           searchCapture={this.searchCapture}
+          searchResult={this.searchResult}
           />  
         {/* {console.log(this.state.data)} */}
 
-        {/* map through the data and use it to display all the post items, as well as putting inputs through to the component */}
-        {this.state.data.map( item => 
-          <Post key={item.id} 
-            post={item} 
-            likeButton={this.updateLikes}
-            updateLocalData={this.updateLocalData}
+        {/* add load screen icon with a ternary condition to have the loader show while we wait */}
+        {this.state.data.length === 0 
+        ? 
+          <Loader 
+            type="CradleLoader"
+            color="#00BFFF"
+            height="100"	
+            width="100"
+          /> 
+        //  map through the data and use it to display all the post items, as well as putting inputs through to the component 
+        :
+          this.state.data.map( item => 
+            <Post key={item.id} 
+              post={item} 
+              likeButton={this.updateLikes}
+              updateLocalData={this.updateLocalData}
             />
         )}
       </div>

@@ -8,11 +8,6 @@ import PropTypes from 'prop-types'
 
 //pass in props to call on the passed down properties from the app.js
 function Post(props) {
-    
-  console.log(props.post.username)
-  console.log(props.post)
-
-
   return( 
     <div className='post-container'>
     {/* input all items from dummy data objects using props that were passed down from app */}

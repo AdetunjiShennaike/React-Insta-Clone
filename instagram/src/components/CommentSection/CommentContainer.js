@@ -4,6 +4,7 @@ import Comment from './Comment'
 //import moment to change the timestamp apperance
 import moment from 'moment'
 
+//used a shorthand instead of typing locastorage everytime
 let stored = window.localStorage
 
 class CommentContainer extends React.Component {
@@ -15,7 +16,6 @@ class CommentContainer extends React.Component {
       text: '',
       updateLocalData: props.updateLocalData,
     }
-    console.log(props.comments)
   }
 
   
