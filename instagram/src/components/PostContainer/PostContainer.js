@@ -30,6 +30,10 @@ let PngContainer = styled.div`
   
 `
 
+let Likes = styled.h3`
+  margin: 0 30px;
+`
+
 let PngImgs = styled.img `
   margin-right: 10px;
   width: auto;
@@ -53,7 +57,7 @@ function Post(props) {
         <PngImgs src='./111-bubble2.png' alt='comment'></PngImgs>
       </PngContainer>
 
-      <h3>{props.post.like} Likes</h3>
+      <Likes>{props.post.likes} Likes</Likes>
       <CommentContainer 
         comments={props.post.comments}
         timestamp={props.post.timestamp}

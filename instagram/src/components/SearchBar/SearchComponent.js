@@ -36,7 +36,7 @@ let Search = (props) => {
         <form>
           <input type='text'
             size={30} 
-            onChange={props.searchResult}
+            onChange={props.searchCapture}
             placeholder='Search'>
           </input>
         </form>

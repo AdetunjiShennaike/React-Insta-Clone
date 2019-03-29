@@ -57,38 +57,35 @@ class PostPage extends Component {
   // }
 
   //text capture of search box
-  // searchCapture = event => {
-  //   // capture the input from the target using the name
-  //  this.setState({
-  //     search : event.target.value
-  //   })
+  searchCapture = event => {
+    // capture the input from the target using the name
+   this.setState({
+      search : event.target.value
+    })
     
-  // };
-
-  searchResult = event => {
-    //prevent default behavior
-    event.preventDefault();
-
-    // capture the input from the event target value and have it filter out usernames
-    this.state.search = event.target.value;
-    console.log('event: ',this.state.search)
-    let result = []
-
-    result = this.state.data.filter( (target, i) => {
-      target.username[i].startsWith(`${this.state.search}`)
-      console.log(target.username)
-      console.log(target.username[i])
-    });
-    console.log(result)
-
-    result.unshift('your search results')
-
-    this.setState({
-      data: result
-    });
-    
-
   };
+
+  // searchResult = event => {
+  //   //prevent default behavior
+  //   event.preventDefault();
+
+  //   // capture the input from the event target value and have it filter out usernames
+  //   this.state.search = event.target.value;
+  //   console.log('event: ',this.state.search)
+  //   let result = []
+
+  //   result = this.state.data.filter( target => {
+  //     target.username.includes(this.state.search)      
+  //   });
+  //   console.log(target.username)
+  //   console.log(result)
+
+  //   result.unshift('your search results')
+
+  //   this.setState({
+  //     data: result
+  //   });    
+  // };
   
   updateLikes() {
 
@@ -116,22 +113,28 @@ class PostPage extends Component {
             width="100"
           />
         //make a else if statement for the search bar 
-        : this.state.data.length === 1
+        : !this.state.search && !this.state.data.filter(target => target.username.includes(this.state.search))
         //display a sorry for there being no results by adding 1 item to the array by default
+        //changed how it should work to a not empty plus no data state
         ?
           <h2> 
-            Sorry we could not find what you were looking for
+            Sorry we could not find what you were looking for.
           </h2>
         
         //  map through the data and use it to display all the post items, as well as putting inputs through to the component 
         :
-          this.state.data.map( item => 
+          this.state.data
+            .filter(target =>
+            target.username.includes(this.state.search))
+            
+            .map(item => 
             <Post key={item.id} 
               post={item} 
               likeButton={this.updateLikes}
               updateLocalData={this.updateLocalData}
             />
-        )}
+            
+          )}
       </div>
     );
   }
