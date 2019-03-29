@@ -1,0 +1,20 @@
+.searchbar {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.searchbar .logo {
+  margin-right: 10px;
+}
+
+.searchbar ul {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.searchbar img {
+  width: auto;
+  height: 50px;
+}
