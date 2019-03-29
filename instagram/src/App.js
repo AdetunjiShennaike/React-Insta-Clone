@@ -1,28 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import PostPage from './components/PostContainer/PostPage'
+import LoginPage from './components/Login/Login';
+import withAuthenticate from './components/authentication/withAuthenticate';
 
-class App extends Component {
-  constructor () {
-    super()
-    //set state for this class
-    this.state = {
-      
-    }
-  }
+const PageSwitch = withAuthenticate(PostPage)(LoginPage);
 
-  componentDidMount() {
-
-  }
-
-  //render the entire application
-  render() {
+function App() {
     return (
-      <div className="container">
-        <PostPage/>
+      <div className='container'>
+        <PageSwitch />
       </div>
     );
-  }
 }
 
 export default App;

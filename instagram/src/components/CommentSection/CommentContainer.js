@@ -28,6 +28,17 @@ let NewComment = styled.div`
 
 `
 
+//make an if statement for the comments so that the stored data is used instead of the props
+// let comments = []
+
+// if (JSON.parse(stored.getItem('exchange'))){
+//   comments = JSON.parse(stored.getItem('exchange'))
+// }
+// else
+// {
+//   comments = this.state.content
+// }
+
 class CommentContainer extends React.Component {
   constructor(props) {
     super(props);
